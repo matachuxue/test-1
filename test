@@ -1,0 +1,13 @@
+
+firm=pd.read_csv('H:\\Macong\\微信\\Macong_work\\github_project\\github项目\\数据\\OrgSamplewithDV.csv',encoding='utf-8')
+firm=firm.rename(columns={'login':'org_login'})
+firm=firm[['org_login','Company Name']]
+df1=pd.read_csv('H:\\Macong\\微信\\Macong_work\\github_project\\github项目\\数据\\OrgRepo.csv',encoding='utf-8')
+df1=df1.drop_duplicates().reset_index(drop=True)
+# print(df1)
+
+df1=pd.merge(df1,firm,on=['org_login'])
+print(df1[df1['Company Name']=='AETNA INC'])
+df2=pd.read_csv('E:\\python\\2021_2_7\\with_push\\ContributorCommits.csv',encoding='utf-8')
+print(df2[df2['repo_name']=='aetnahealth/SwiftFormat'])
+print(df2[df2['repo_name']=='aetnahealth/devsecops-coding-test'])
